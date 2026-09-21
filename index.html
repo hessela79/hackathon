@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hackathon | Label34</title>
+<meta name="description" content="Dien je case in bij de Label34 Hackathon. Tegen een kleine vergoeding zetten wij een multidisciplinair team van 6-8 specialisten twee dagen dedicated op jouw uitdaging.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Besley:wght@400;600&family=Chivo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#002CF8;
+    --coral:#FF7A68;
+    --ink:#0B0B14;
+    --ink-soft:#4A4A57;
+    --bg:#FFFFFF;
+    --bg-soft:#F6F6F4;
+    --line:#E5E5E2;
+    --radius:18px;
+    --maxw:1160px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Chivo',sans-serif;
+    font-weight:400;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Besley',serif;
+    font-weight:600;
+    line-height:1.08;
+    margin:0 0 .5em;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0 0 1em;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .text-blue{color:var(--blue);}
+  .text-coral{color:var(--coral);}
+
+  /* NAV */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 24px;max-width:var(--maxw);margin:0 auto;
+  }
+  .logo{
+    font-family:'Besley',serif;font-weight:600;font-size:22px;
+    color:var(--blue);text-decoration:none;letter-spacing:-0.01em;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--blue);color:#fff;
+    padding:14px 26px;border-radius:100px;
+    font-family:'Chivo',sans-serif;font-weight:700;font-size:15px;
+    text-decoration:none;border:none;cursor:pointer;
+    transition:transform .2s ease, background .2s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{background:#0021c2;transform:translateY(-2px);}
+  .btn .arrow{transition:transform .2s ease;}
+  .btn:hover .arrow{transform:rotate(-45deg);}
+  .btn.alt{background:transparent;color:var(--blue);border:2px solid var(--blue);padding:12px 24px;}
+  .btn.alt:hover{background:var(--blue);color:#fff;}
+  .btn.small{padding:11px 20px;font-size:14px;}
+
+  /* HERO */
+  .hero{
+    padding:72px 0 64px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:end;
+  }
+  .hero h1{
+    font-size:clamp(34px,5.4vw,64px);
+    max-width:14ch;
+  }
+  .hero-side p{
+    font-size:17px;color:var(--ink-soft);
+    max-width:44ch;
+  }
+  .hero-side{display:flex;flex-direction:column;gap:24px;align-items:flex-start;}
+
+  /* SECTION shared */
+  section{padding:76px 0;}
+  section.divider{border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--coral);margin-bottom:14px;display:block;
+  }
+  .section-grid{
+    display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start;
+  }
+  .section-grid h2{font-size:clamp(28px,3.4vw,42px);}
+  .section-grid .body p{font-size:17px;color:var(--ink-soft);max-width:56ch;}
+  .section-grid .body p:last-child{margin-bottom:0;}
+
+  /* STEPS (accordion) */
+  .steps{margin-top:8px;}
+  .step{
+    border-top:1px solid var(--line);
+  }
+  .step:last-child{border-bottom:1px solid var(--line);}
+  .step summary{
+    list-style:none;cursor:pointer;
+    display:flex;align-items:center;gap:20px;
+    padding:26px 0;
+    font-family:'Besley',serif;font-size:clamp(20px,2.4vw,26px);font-weight:600;
+  }
+  .step summary::-webkit-details-marker{display:none;}
+  .step-num{
+    font-family:'Chivo',sans-serif;font-weight:700;font-size:14px;color:var(--blue);
+    background:var(--bg-soft);border-radius:100px;width:34px;height:34px;
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .step-plus{margin-left:auto;font-size:22px;color:var(--blue);font-weight:300;transition:transform .2s ease;}
+  .step[open] .step-plus{transform:rotate(45deg);}
+  .step-body{padding:0 0 30px 54px;max-width:60ch;color:var(--ink-soft);font-size:16px;}
+  .step-body a.btn{margin-top:16px;}
+
+  /* FOR WHO */
+  .forwho-list{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:12px;}
+  .forwho-list li{
+    display:flex;gap:12px;align-items:flex-start;
+    font-size:16px;color:var(--ink);
+    background:var(--bg-soft);border-radius:12px;padding:14px 16px;
+  }
+  .forwho-list li::before{
+    content:"";flex:none;width:8px;height:8px;border-radius:50%;
+    background:var(--coral);margin-top:8px;
+  }
+
+  /* PRICE band */
+  .price-band{
+    background:var(--ink);color:#fff;border-radius:var(--radius);
+    padding:44px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;
+    margin-top:56px;
+  }
+  .price-band .amount{
+    font-family:'Besley',serif;font-size:clamp(30px,4vw,44px);color:var(--coral);
+  }
+  .price-band .amount small{font-family:'Chivo',sans-serif;font-size:14px;color:#B9B9C4;display:block;font-weight:400;margin-top:4px;}
+  .price-band p{color:#D6D6E0;margin:0;max-width:48ch;font-size:16px;}
+
+  /* CASES */
+  .cases{background:var(--bg-soft);}
+  .cases-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px;
+  }
+  .case-card{
+    background:#fff;border-radius:var(--radius);padding:36px;
+    border:1px solid var(--line);
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .case-tag{
+    font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--blue);
+  }
+  .case-card h3{font-size:22px;margin-bottom:4px;}
+  .case-card p{font-size:15.5px;color:var(--ink-soft);margin-bottom:0;}
+  .case-card p + p{margin-top:12px;}
+
+  /* CTA */
+  .cta{
+    background:var(--blue);color:#fff;border-radius:var(--radius);
+    padding:56px 44px;text-align:left;
+    display:grid;grid-template-columns:1.3fr auto;gap:32px;align-items:center;
+  }
+  .cta h2{color:#fff;font-size:clamp(26px,3.4vw,38px);}
+  .cta p{color:#C9D0FF;font-size:16px;max-width:52ch;margin-bottom:0;}
+  .cta .btn{background:#fff;color:var(--blue);}
+  .cta .btn:hover{background:var(--coral);color:#fff;}
+
+  /* FOOTER */
+  footer{padding:48px 0 60px;}
+  .footer-inner{
+    display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
+    border-top:1px solid var(--line);padding-top:28px;
+  }
+  .footer-logo{font-family:'Besley',serif;font-weight:600;color:var(--blue);font-size:18px;}
+  .footer-text{color:var(--ink-soft);font-size:14px;}
+  .footer-social{display:flex;gap:14px;}
+  .footer-social a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:700;}
+  .footer-social a:hover{color:var(--blue);}
+
+  @media (max-width:880px){
+    .hero-grid,.section-grid,.cases-grid{grid-template-columns:1fr;}
+    .hero-grid{gap:32px;}
+    .price-band,.cta{grid-template-columns:1fr;text-align:left;}
+    .step-body{padding-left:0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo">Label34</a>
+    <a href="#indienen" class="btn small">Dien je case in <span class="arrow">→</span></a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <h1>Jouw grootste uitdaging. Onze beste mensen. Twee dagen.</h1>
+      <div class="hero-side">
+        <p>Heb je een idee dat al maanden in je hoofd zit, maar niet concreet wordt? Of een business probleem waar je maar niet uitkomt, ondanks herhaalde pogingen? Dan is dit je kans om daar eindelijk wat aan te veranderen.</p>
+        <p>Meld je case aan bij de Label34 Hackathon. Tegen een kleine vergoeding zetten wij er een multidisciplinair team op van strategen, designers en developers. Twee dagen later heb je een werkend prototype.</p>
+        <a href="#indienen" class="btn">Dien je case in <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAT IS HET -->
+  <section class="divider">
+    <div class="wrap section-grid">
+      <div>
+        <span class="eyebrow">De Hackathon</span>
+        <h2>Wat is de Label34 Hackathon?</h2>
+      </div>
+      <div class="body">
+        <p>Jij dient je case in: een app-idee, een merkprobleem, een conversievraagstuk. Wij reserveren een multidisciplinair team van 6-8 strategen, designers en developers dat twee dagen volledig dedicated aan jouw vraagstuk werkt. Geen klantwerk ertussendoor, geen versnipperde aandacht: alleen jouw uitdaging, twee dagen lang.</p>
+        <p>Zo krijg je in 48 uur een werkend prototype, concept of strategie — waar een regulier traject weken en tienduizenden euro's aan expertise voor kost.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOE WERKT HET -->
+  <section class="divider">
+    <div class="wrap">
+      <span class="eyebrow">Het proces</span>
+      <h2>Hoe werkt het?</h2>
+      <div class="steps">
+        <details class="step" open>
+          <summary><span class="step-num">1</span>Dien je case in<span class="step-plus">+</span></summary>
+          <div class="step-body">
+            <p>Beschrijf in een paar zinnen waar je mee worstelt of van droomt. Een app die er nog niet is, een merk dat niet landt, een conversieprobleem dat je gek maakt: alles mag. Hoe concreter, hoe beter. Je kunt je case het hele jaar door indienen.</p>
+            <a href="#indienen" class="btn alt">Dien je case in <span class="arrow">→</span></a>
+          </div>
+        </details>
+        <details class="step">
+          <summary><span class="step-num">2</span>Wij plannen samen<span class="step-plus">+</span></summary>
+          <div class="step-body">
+            <p>Na je aanmelding nemen we contact op. Samen bepalen we een planning die haalbaar is — voor ons én voor jou — zodat ons team van 6-8 specialisten er twee dagen volledig voor kan gaan.</p>
+          </div>
+        </details>
+        <details class="step">
+          <summary><span class="step-num">3</span>Twee dagen bouwen<span class="step-plus">+</span></summary>
+          <div class="step-body">
+            <p>Een multidisciplinair team van 6-8 specialisten duikt twee dagen lang in jouw uitdaging. Van strategie tot werkend prototype. Jij bent welkom bij de kick-off en de eindpresentatie: je ziet live hoe je idee tot leven komt.</p>
+          </div>
+        </details>
+        <details class="step">
+          <summary><span class="step-num">4</span>Resultaat ontvangen<span class="step-plus">+</span></summary>
+          <div class="step-body">
+            <p>Je ontvangt het prototype, concept of de strategie. Wat normaal weken kost en tienduizenden euro's, krijg jij in 48 uur — voor een vaste vergoeding van €2.450,- (excl. btw). Het enige wat we vragen: daag ons uit, wij doen de rest.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="price-band">
+        <p>Voor het inzetten van een volledig, dedicated team van 6-8 specialisten gedurende twee dagen vragen we een vaste vergoeding — een fractie van de reguliere waarde van dit traject.</p>
+        <div class="amount">€2.450,-<small>excl. btw, per case</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOOR WIE -->
+  <section class="divider">
+    <div class="wrap section-grid">
+      <div>
+        <span class="eyebrow">Doelgroep</span>
+        <h2>Voor wie?</h2>
+      </div>
+      <div class="body">
+        <p>Of je een MKB, non-profit of groot bedrijf bent: iedere inzending is welkom. Dit is relevant als:</p>
+        <ul class="forwho-list">
+          <li>Je een app-idee hebt, maar geen team om het te bouwen</li>
+          <li>Je merk niet landt en je niet weet waarom</li>
+          <li>Je groei vastloopt en niet weet waarom</li>
+          <li>Je een impactvolle missie hebt, maar geen/beperkt budget</li>
+          <li>Je snel een concept wilt valideren voordat je er maanden aan besteedt</li>
+          <li>Je met een digitaal vraagstuk worstelt en een frisse blik zoekt</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section class="cases divider">
+    <div class="wrap">
+      <span class="eyebrow">Eerder gebouwd</span>
+      <h2>Dit bouwden we tijdens eerdere hackathons</h2>
+      <div class="cases-grid">
+        <div class="case-card">
+          <span class="case-tag">Port of Amsterdam</span>
+          <h3>Een digital twin van het Noordzeekanaalgebied</h3>
+          <p>Port of Amsterdam vroeg om een digital twin: een verkeerssimulator van de scheepvaartketen in het Noordzeekanaalgebied, waarmee beleidsmakers kunnen testen welke interventie — zoals schutvolgorde, sluisgebruik of sleepbootinzet — het meeste effect heeft op vertraging, betrouwbaarheid en capaciteit. Doel: een werkend prototype dat laat zien welke ingreep het snelst bijdraagt aan de norm van 95% scheepvaart conform planning.</p>
+          <p>Een groot deel van de eerste uren ging zitten in het begrijpen van de havenmaterie en het bijbehorende jargon. Daarna is er tot diep in de nacht doorgewerkt aan een simulator met tal van instelbare variabelen. Tijdens de eindpresentatie bleek hoeveel er in twee dagen al mogelijk was: de simulator maakte concreet dat een digital twin van de scheepvaartketen met de huidige technologie geen vergezicht meer hoeft te zijn.</p>
+        </div>
+        <div class="case-card">
+          <span class="case-tag">Integraal Kankercentrum Nederland</span>
+          <h3>Een chatbot die precies genoeg durft te zijn</h3>
+          <p>IKNL wilde een chatbot die op basis van de informatie op de eigen website eenvoudig vragen van bezoekers beantwoordt, bijvoorbeeld over overlevingskansen of klachten bij bepaalde vormen van kanker. Doel: een oplossingsrichting die IKNL kan gebruiken bij de ontwikkeling van hun nieuwe website.</p>
+          <p>Bij medische informatie van dit gevoeligheidsniveau zat de echte uitdaging niet alleen in de techniek, maar in de exactheid van de data die de bot mag uitserveren. Die puzzel is in twee dagen gekraakt: aan het einde van de tweede dag stond er een werkende bot die liet zien hoe zo'n toepassing er in de praktijk uit kan zien. Met de nieuwe website in aantocht wordt nu samen bekeken of en hoe dit concept verder gebracht kan worden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="indienen">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2>Jouw idee verdient beter dan een la.</h2>
+          <p>Dien je case op elk moment van het jaar in. Wij nemen contact op om samen een haalbare planning te bepalen — voor €2.450,- (excl. btw) zetten we twee dagen een team van 6-8 specialisten volledig voor je aan het werk.</p>
+        </div>
+        <a href="mailto:hackathon@label34.group?subject=Ik%20dien%20een%20case%20in" class="btn">Dien je case in <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-logo">Label34</div>
+    <div class="footer-text">Kennemerplein 2, 2011 MJ Haarlem</div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/company/label34/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/label34group/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
